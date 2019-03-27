@@ -1,0 +1,11 @@
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const polishRouter = require('./routerModules/polishRouter');
+const brandRouter = require('./routerModules/brandRouter');
+const typeRouter = require('./routerModules/typeRouter');
+app.use('/type',typeRouter);
+app.use('/polish',polishRouter);
+app.use('/brand',brandRouter);
+app.listen(process.env.PORT || 3000);
+app.use(cors());
