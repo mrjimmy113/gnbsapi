@@ -33,3 +33,31 @@ let create = (color) => {
     })
 }
 exports.create = create;
+
+let decreaseQuantity  = (client,productId,quantity) => {
+    return new Promise((resolve,reject) => {
+        let query = `UPDATE public.color
+        SET quantity= quantity - ${quantity}
+        WHERE id = '${productId}'`;
+        client.query(query,(err,res) => {
+            if(err) reject(err);
+            else resolve();
+            return;
+        })
+    })
+}
+exports.decreaseQuantity = decreaseQuantity
+
+let increaseQuantity  = (client,colorId,quantity) => {
+    return new Promise((resolve,reject) => {
+        let query = `UPDATE public.color
+        SET quantity = quantity + ${quantity}
+        WHERE id = '${colorId}'`;
+        client.query(query,(err,res) => {
+            if(err) reject(err);
+            else resolve();
+            return;
+        })
+    })
+}
+exports.increaseQuantity = increaseQuantity;
